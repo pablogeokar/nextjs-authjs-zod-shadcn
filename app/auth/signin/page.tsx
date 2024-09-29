@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-//import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -106,10 +106,10 @@ export default function SignIn() {
             or
           </span>
           <form className="w-full" action={handleGithubSignin}>
-            {/* <Button variant="outline" className="w-full" type="submit">
+            <Button variant="outline" className="w-full" type="submit">
               <GitHubLogoIcon className="h-4 w-4 mr-2" />
               Sign in with GitHub
-            </Button> */}
+            </Button>
           </form>
         </CardContent>
       </Card>

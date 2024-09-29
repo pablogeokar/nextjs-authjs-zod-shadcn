@@ -24,3 +24,6 @@ pnpm dlx shadcn@latest add card button form input
 ```bash
 pnpm dlx auth secret
 ```
+6 - Passo a passo para a configuração social do Github
+6.1 acessar o endereço: `https://github.com/settings/apps`
+selecionar a opção [OAuth Apps]->[New OAuth App] e seguir os passos necessários, lembrando que é necessário informar a Authorization callback no formato: `http://localhost:3000/api/auth/callback/github`
