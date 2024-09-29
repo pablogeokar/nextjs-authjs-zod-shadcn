@@ -17,7 +17,7 @@ pnpm dlx shadcn-ui@latest init
 
 4 - exemplo de instalação dos componentes do shadcn de forma individual
 ```bash
-pnpm dlx shadcn@latest add card
+pnpm dlx shadcn@latest add card button
 ```
 
 5 - Iniciando a configuração do Next-Auth
