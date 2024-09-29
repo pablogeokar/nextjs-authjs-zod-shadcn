@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/auth";
 //import { useSession } from "next-auth/react";
-//import { handleSignOut } from "@/app/actions/authActions";
+import { handleSignOut } from "@/app/actions/authActions";
 
 export default async function Navbar() {
   //export default function Navbar() {
@@ -21,8 +21,7 @@ export default async function Navbar() {
           <Button variant="default">Sign In</Button>
         </Link>
       ) : (
-        // <form action={handleSignOut}>
-        <form>
+        <form action={handleSignOut}>
           <Button variant="default" type="submit">
             Sign Out
           </Button>
