@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,6 +23,7 @@ import LoadingButton from "@/components/loading-button";
 import {
   handleCredentialsSignin,
   handleGithubSignin,
+  handleGoogleSignin,
 } from "@/app/actions/authActions";
 import { useState } from "react";
 import ErrorMessage from "@/components/error-message";
@@ -105,12 +107,20 @@ export default function SignIn() {
           <span className="text-sm text-gray-500 text-center block my-2">
             or
           </span>
-          <form className="w-full" action={handleGithubSignin}>
-            <Button variant="outline" className="w-full" type="submit">
-              <GitHubLogoIcon className="h-4 w-4 mr-2" />
-              Sign in with GitHub
-            </Button>
-          </form>
+          <div className="flex flex-col gap-2">
+            <form className="w-full" action={handleGithubSignin}>
+              <Button variant="outline" className="w-full" type="submit">
+                <FaGithub className="h-4 w-4 mr-2" />
+                Sign in with GitHub
+              </Button>
+            </form>
+            <form className="w-full" action={handleGoogleSignin}>
+              <Button variant="outline" className="w-full" type="submit">
+                <FcGoogle className="h-4 w-4 mr-2" />
+                Sign in with Google
+              </Button>
+            </form>
+          </div>
         </CardContent>
       </Card>
     </div>

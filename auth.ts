@@ -1,10 +1,23 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 import { signInSchema } from "./lib/zod";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
+    Google({
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
+      profile(profile) {
+        return { name: profile.name, role: "admin" };
+      },
+    }),
     Github({
       profile(profile) {
         return { name: profile.name, role: "admin" };
