@@ -31,6 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: "1",
           name: "Aditya Singh",
           email: "jojo@jojo.com",
+          role: "admin",
         };
 
         if (!user) {
@@ -46,14 +47,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     authorized({ request: { nextUrl }, auth }) {
       const isLoggedIn = !!auth?.user;
       const { pathname } = nextUrl;
-      //const role = auth?.user.role || "user";
+      const role = (auth?.user.role as string) || "user";
       if (pathname.startsWith("/auth/signin") && isLoggedIn) {
         return Response.redirect(new URL("/", nextUrl));
       }
-      // if (pathname.startsWith("/page2") && role !== "admin") {
-      //   return Response.redirect(new URL("/", nextUrl));
-      // }
+      if (pathname.startsWith("/page2") && role !== "admin") {
+        return Response.redirect(new URL("/", nextUrl));
+      }
       return !!auth;
+    },
+    jwt({ token, user, trigger, session }) {
+      if (user) {
+        token.id = user.id as string;
+        token.role = user.role as string;
+      }
+      if (trigger === "update" && session) {
+        token = { ...token, ...session };
+      }
+      return token;
+    },
+    session({ session, token }) {
+      session.user.id = token.id;
+      session.user.role = token.role;
+      return session;
     },
   },
   pages: {
