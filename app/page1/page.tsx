@@ -8,7 +8,8 @@ export default function Page1() {
       <button
         type="button"
         onClick={() => {
-          session?.user && update({ ...session.user, name: "asdasdasd singh" });
+          session?.user &&
+            update({ ...session.user, name: "asdasdasd singh", role: "user" });
         }}
       >
         Update session

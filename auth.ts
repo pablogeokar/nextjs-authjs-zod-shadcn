@@ -5,7 +5,11 @@ import { signInSchema } from "./lib/zod";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    Github,
+    Github({
+      profile(profile) {
+        return { name: profile.name, role: "admin" };
+      },
+    }),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email", placeholder: "seu@email.com" },
